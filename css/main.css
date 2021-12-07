@@ -1,0 +1,124 @@
+:root {
+    --degrade: linear-gradient(90deg, rgb(76, 179, 211) 0%, rgba(9,88,121,0.8323704481792717) 17%, rgba(222,0,255,1) 100%);
+}
+
+body {
+    background-color: white;
+}
+
+italic {
+    font-style: italic;
+}
+
+.menu {
+    color: rgb(83, 72, 180);
+    text-decoration: none;
+    font-size: 27px;
+    padding-left: 5px;
+    margin-left: 5px;
+}
+
+.menu:hover {
+    color: var(--degrade);
+}
+
+.endnav {
+    width: auto;
+    height: 3px;
+    background: rgb(2,0,36);
+    background: var(--degrade);
+}
+
+.separate {
+    height: 80px;
+}
+
+.void {
+    height: 100px;
+}
+
+.title {
+    text-align: center;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.subtitle {
+    text-align: center;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 18px;
+}
+
+p {
+    font-size: 20px;
+}
+
+.normal {
+    color: black;
+}
+
+.center {
+    text-align: center;
+}
+
+.acceuil {
+    width: auto;
+    height: 6%;
+    text-align: right;
+    background-color: white;
+}
+
+.news_font {
+    height: 110%;
+    background: linear-gradient(90deg, rgb(134, 199, 219) 0%, rgba(9,88,121,0.8323704481792717) 17%,rgb(77, 2, 88) 100%);
+}
+
+.news, .news2 {
+    margin-left: 200px;
+    background: linear-gradient(217deg, rgba(61, 181, 202, 0.8), rgba(14, 17, 168, 0) 70.71%),
+    linear-gradient(127deg, rgba(71, 175, 223, 0.8), rgba(4, 118, 224, 0) 70.71%),
+    linear-gradient(336deg, rgba(178, 81, 207, 0.8), rgba(83, 8, 112, 0) 70.71%);
+    width: 25%;
+    height: 275px;
+    text-align: center;
+    color: white;
+    border: solid;
+    border-color: black;
+    border-width: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.news_p1, .news_p2 {
+    padding-top: 50px;
+}
+
+.news2 {
+    margin-left: 60%;
+}
+
+.about {
+    margin-top: -20px;
+    background: linear-gradient(217deg, rgba(27, 30, 31, 0.8), rgba(163, 163, 167, 0) 70.71%),
+    linear-gradient(127deg, rgba(58, 58, 58, 0.8), rgba(40, 41, 41, 0) 70.71%),
+    linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(37, 37, 37, 0) 70.71%);
+    width: 100%;
+    height: auto;
+    text-align: center;
+    color: white;
+}
+
+.footer {
+    font-weight: 900;
+}
+
+.link, link:visited {
+    text-decoration: underline;
+    text-decoration-color: rgb(17, 17, 17);
+    color: rgb(17, 17, 17);
+}
+
+.link:hover {
+    text-decoration: none;
+}
