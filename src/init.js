@@ -29,78 +29,86 @@ module.exports = {
                 const choice = interaction.options.getString("option");
 
                 if (choice == "memberrole") {
-                    if (!memberrole[guild.id]) {
-                        memberrole[guild.id] = {
-                            "role": interaction.options.getString("argument")
-                        }
-                    } else {
-                        memberrole[guild.id] = {
-                            "role": interaction.options.getString("argument")
-                        }
-                    }
-                    fs.writeFile("./src/data/memberrole.json", JSON.stringify(logs), function(err) { if (err) console.log(err); })
-
-                    const MemberRole = guild.roles.cache.get(interaction.options.getString("argument"));
-                    const MemeberRoleEmbed = new EmbedBuilder()
-                        .setColor("DarkAqua")
-                        .setTitle("ModPr | Member Role Config")
-                        .setAuthor({
-                            name: "Program",
-                            iconURL: "https://cdn.discordapp.com/attachments/793461922338045952/1000513773284638770/Program_Logo_V2.png",
-                            url: "https://program132.github.io/home.html"
-                        })
-                        .addFields
-                        (
-                            {
-                                name: "Logs Channel Defined", value: "Thanks for adding your member role. \n" +
-                                    "Name: " + MemberRole.name + "\n" +
-                                    "ID: " + MemberRole.id
+                    if (guild.roles.cache.find(x => x.id == interaction.options.getString("argument"))) {
+                        if (!memberrole[guild.id]) {
+                            memberrole[guild.id] = {
+                                "role": interaction.options.getString("argument")
                             }
-                        );
-
-                    if (logs[guild.id]) {
-                        const LogsChannel = guild.channels.cache.get(logs[guild.id]["id"]);
-                        if (LogsChannel.id != interaction.channel.id) {
-                            await LogsChannel.send({embeds: [MemeberRoleEmbed]});
+                        } else {
+                            memberrole[guild.id] = {
+                                "role": interaction.options.getString("argument")
+                            }
                         }
-                    }
+                        fs.writeFile("./src/data/memberrole.json", JSON.stringify(memberrole), function(err) { if (err) console.log(err); })
 
-                    await interaction.reply({embeds: [MemeberRoleEmbed]});
+                        const MemberRole = guild.roles.cache.get(interaction.options.getString("argument"));
+                        const MemeberRoleEmbed = new EmbedBuilder()
+                            .setColor("DarkAqua")
+                            .setTitle("ModPr | Member Role Config")
+                            .setAuthor({
+                                name: "Program",
+                                iconURL: "https://cdn.discordapp.com/attachments/793461922338045952/1000513773284638770/Program_Logo_V2.png",
+                                url: "https://program132.github.io/home.html"
+                            })
+                            .addFields
+                            (
+                                {
+                                    name: "Logs Channel Defined", value: "Thanks for adding your member role. \n" +
+                                        "Name: " + MemberRole.name + "\n" +
+                                        "ID: " + MemberRole.id
+                                }
+                            );
+
+                        if (logs[guild.id]) {
+                            const LogsChannel = guild.channels.cache.get(logs[guild.id]["id"]);
+                            if (LogsChannel.id != interaction.channel.id) {
+                                await LogsChannel.send({embeds: [MemeberRoleEmbed]});
+                            }
+                        }
+
+                        await interaction.reply({embeds: [MemeberRoleEmbed]});
+                    } else {
+                        await interaction.reply("ModPr Error: The role does not exist.");
+                    }
                 }
                 else if (choice == "logs") {
-                    if (!logs[guild.id]) {
-                        logs[guild.id] = {
-                            "id": interaction.options.getString("argument")
-                        }
-                    } else {
-                        logs[guild.id] = {
-                            "id": interaction.options.getString("argument")
-                        }
-                    }
-                    fs.writeFile("./src/data/logs.json", JSON.stringify(logs), function(err) { if (err) console.log(err); })
-
-                    const LogsChannel = guild.channels.cache.get(interaction.options.getString("argument"));
-                    const LogsEmbed = new EmbedBuilder()
-                        .setColor("DarkAqua")
-                        .setTitle("ModPr | Logs Channel Config")
-                        .setAuthor({
-                            name: "Program",
-                            iconURL: "https://cdn.discordapp.com/attachments/793461922338045952/1000513773284638770/Program_Logo_V2.png",
-                            url: "https://program132.github.io/home.html"
-                        })
-                        .addFields
-                        (
-                            {
-                                name: "Logs Channel Defined", value: "Thanks for adding your channel logs. \n" +
-                                    "Name: " + LogsChannel.name + "\n" +
-                                    "ID: " + LogsChannel.id
+                    if (guild.channels.cache.find(x => x.id == interaction.options.getString("argument"))) {
+                        if (!logs[guild.id]) {
+                            logs[guild.id] = {
+                                "id": interaction.options.getString("argument")
                             }
-                        );
+                        } else {
+                            logs[guild.id] = {
+                                "id": interaction.options.getString("argument")
+                            }
+                        }
+                        fs.writeFile("./src/data/logs.json", JSON.stringify(logs), function(err) { if (err) console.log(err); })
 
-                    if (LogsChannel.id != interaction.channel.id) {
-                        await LogsChannel.send({embeds: [LogsEmbed]});
+                        const LogsChannel = guild.channels.cache.get(interaction.options.getString("argument"));
+                        const LogsEmbed = new EmbedBuilder()
+                            .setColor("DarkAqua")
+                            .setTitle("ModPr | Logs Channel Config")
+                            .setAuthor({
+                                name: "Program",
+                                iconURL: "https://cdn.discordapp.com/attachments/793461922338045952/1000513773284638770/Program_Logo_V2.png",
+                                url: "https://program132.github.io/home.html"
+                            })
+                            .addFields
+                            (
+                                {
+                                    name: "Logs Channel Defined", value: "Thanks for adding your channel logs. \n" +
+                                        "Name: " + LogsChannel.name + "\n" +
+                                        "ID: " + LogsChannel.id
+                                }
+                            );
+
+                        if (LogsChannel.id != interaction.channel.id) {
+                            await LogsChannel.send({embeds: [LogsEmbed]});
+                        }
+                        await interaction.reply({embeds: [LogsEmbed]});
+                    } else {
+                        await interaction.reply("ModPr Error: The channel does not exist.");
                     }
-                    await interaction.reply({embeds: [LogsEmbed]});
                 }
             }
         } catch (err) {
